@@ -1,0 +1,1144 @@
+/* =========================================================
+   BLOGIFY — FINAL STYLE.CSS
+   Bootstrap should be loaded BEFORE this file.
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+    --blog-bg: #f5f7fb;
+    --blog-surface: #ffffff;
+    --blog-text: #111827;
+    --blog-muted: #6b7280;
+    --blog-border: #e5e7eb;
+
+    --blog-primary: #5b5cf0;
+    --blog-primary-dark: #4546d5;
+
+    --blog-dark: #111827;
+
+    --blog-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+    --blog-shadow-hover: 0 20px 48px rgba(15, 23, 42, 0.14);
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--blog-text);
+
+    background:
+        radial-gradient(
+            circle at 8% 0%,
+            rgba(91, 92, 240, 0.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 92% 8%,
+            rgba(56, 189, 248, 0.06),
+            transparent 24%
+        ),
+        var(--blog-bg);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+}
+
+.container {
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1540px;
+    }
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    min-height: 76px;
+    padding: 10px 0 !important;
+
+    background: rgba(17, 24, 39, 0.98) !important;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.16);
+}
+
+.navbar .container-fluid {
+    width: 100%;
+    max-width: 1450px;
+
+    margin: 0 auto;
+}
+
+
+/* Blogify logo */
+
+.navbar-brand {
+    position: relative;
+
+    display: inline-flex !important;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 7px 8px !important;
+
+    color: #fff !important;
+
+    font-family:
+        "Trebuchet MS",
+        "Segoe UI",
+        sans-serif !important;
+
+    font-size: 1.5rem !important;
+    font-weight: 800 !important;
+
+    letter-spacing: -0.8px;
+}
+
+.navbar-brand::before {
+    content: "✦";
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 29px;
+    height: 29px;
+
+    border-radius: 8px;
+
+    color: white;
+
+    background: #5957e8;
+
+    font-family: "Segoe UI Symbol", sans-serif;
+    font-size: 15px;
+}
+
+.navbar-brand:hover {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+
+/* Navbar links */
+
+.navbar-nav {
+    align-items: center;
+    gap: 6px;
+}
+
+.navbar .nav-link {
+    position: relative;
+
+    padding: 10px 15px !important;
+
+    border-radius: 10px;
+
+    color: #cbd5e1 !important;
+
+    font-weight: 600;
+
+    transition:
+        color .2s ease,
+        background .2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar .nav-link.active {
+    color: #fff !important;
+    background: rgba(99, 102, 241, 0.18);
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, .18);
+}
+
+
+/* =========================================================
+   DROPDOWN / LOGOUT
+   ========================================================= */
+
+.navbar .dropdown-menu {
+    min-width: 185px;
+
+    margin-top: 10px;
+    padding: 7px;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 13px;
+
+    background: #1f2937;
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, .24);
+}
+
+.navbar .dropdown-item {
+    padding: 9px 12px;
+
+    border-radius: 8px;
+
+    color: #e5e7eb;
+
+    font-weight: 500;
+
+    transition: .2s ease;
+}
+
+.navbar .dropdown-item:hover,
+.navbar .dropdown-item:focus {
+    color: #fff;
+    background: rgba(255, 255, 255, .08);
+}
+
+
+/* Logout */
+
+.navbar .dropdown-menu .dropdown-item[href*="logout"] {
+    color: #fca5a5;
+}
+
+.navbar .dropdown-menu .dropdown-item[href*="logout"]:hover,
+.navbar .dropdown-menu .dropdown-item[href*="logout"]:focus {
+    color: #fecaca;
+    background: rgba(239, 68, 68, .14);
+}
+
+
+/* =========================================================
+   HOME BLOG GRID
+   ========================================================= */
+
+.container.mt-3,
+.container.mt-4 {
+    margin-top: 38px !important;
+}
+
+.row.row-cols-4 {
+    --bs-gutter-x: 28px;
+    --bs-gutter-y: 28px;
+
+    width: 100%;
+
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.row.row-cols-4 > .col {
+    display: flex;
+
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+
+/* =========================================================
+   BLOG CARDS
+   ========================================================= */
+
+.row.row-cols-4 .card {
+    width: 100% !important;
+    min-width: 0;
+    height: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid var(--blog-border);
+    border-radius: 20px;
+
+    background: var(--blog-surface);
+
+    box-shadow: var(--blog-shadow);
+
+    transition:
+        transform .28s ease,
+        box-shadow .28s ease,
+        border-color .28s ease;
+}
+
+.row.row-cols-4 .card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(91, 92, 240, .22);
+
+    box-shadow: var(--blog-shadow-hover);
+}
+
+
+/* =========================================================
+   CARD COVER IMAGE
+   ========================================================= */
+
+.row.row-cols-4 .card-img-top {
+    display: block;
+
+    width: 100% !important;
+    height: 245px !important;
+    max-height: 245px;
+
+    margin: 0;
+    padding: 0;
+
+    object-fit: contain !important;
+    object-position: center;
+
+    background: #eef1f6;
+
+    border: 0;
+}
+
+.row.row-cols-4 .card img {
+    object-fit: contain !important;
+}
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.row.row-cols-4 .card-body {
+    min-height: 155px;
+
+    padding: 19px 20px 20px !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background: #fff;
+}
+
+.row.row-cols-4 .card-title {
+    width: 100%;
+
+    margin: 0 0 17px !important;
+
+    color: var(--blog-text);
+
+    font-size: 1.08rem;
+    font-weight: 750;
+
+    line-height: 1.4;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+
+/* Card button */
+
+.row.row-cols-4 .card .btn {
+    margin-top: auto;
+
+    padding: 9px 18px;
+
+    border: 0;
+    border-radius: 10px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blog-primary),
+            #696af7
+        );
+
+    font-weight: 650;
+
+    box-shadow:
+        0 7px 17px rgba(91, 92, 240, .24);
+
+    transition: all .2s ease;
+}
+
+.row.row-cols-4 .card .btn:hover,
+.row.row-cols-4 .card .btn:focus {
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blog-primary-dark),
+            #5556e5
+        );
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(91, 92, 240, .32);
+}
+
+
+/* =========================================================
+   GENERAL BUTTONS
+   ========================================================= */
+
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--blog-primary);
+    border-color: var(--blog-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--blog-primary-dark);
+    border-color: var(--blog-primary-dark);
+}
+
+
+/* =========================================================
+   GENERAL FORMS
+   ========================================================= */
+
+form {
+    background: var(--blog-surface);
+
+    border: 1px solid var(--blog-border);
+    border-radius: 18px;
+
+    padding: 28px;
+
+    box-shadow: var(--blog-shadow);
+}
+
+form label,
+form .form-label {
+    margin-bottom: 7px;
+
+    color: #374151;
+
+    font-weight: 650;
+}
+
+.form-control {
+    min-height: 45px;
+
+    padding: 10px 13px;
+
+    border: 1px solid #d5dae2;
+    border-radius: 10px;
+
+    color: var(--blog-text);
+    background: #fff;
+
+    box-shadow: none;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.form-control:focus {
+    border-color: var(--blog-primary);
+
+    box-shadow:
+        0 0 0 4px rgba(91, 92, 240, .11);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+
+/* =========================================================
+   BLOG DETAIL
+   ========================================================= */
+
+/* Blog title */
+
+.container.mt-4 > h1 {
+    width: 900px;
+    max-width: 100%;
+
+    margin: 0 auto 25px auto !important;
+
+    color: #171a23;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 2.3rem;
+    font-weight: 800;
+
+    line-height: 1.25;
+
+    letter-spacing: -.7px;
+}
+
+
+/* Blog cover */
+
+.container.mt-4 > img[width="500px"] {
+    display: block;
+
+    width: 900px !important;
+    max-width: 100% !important;
+
+    height: 480px !important;
+
+    margin: 0 auto 28px auto !important;
+
+    object-fit: contain;
+    object-position: center;
+
+    background: #f1f3f6;
+
+    border: 1px solid #e7e9ef;
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.07);
+}
+
+
+/* Blog content */
+
+.container.mt-4 > pre {
+    width: 900px;
+    max-width: 100%;
+
+    margin: 0 auto !important;
+
+    padding: 32px 40px;
+
+    background: #fff;
+
+    border: 1px solid #e7e9ef;
+    border-radius: 16px;
+
+    font-family: "DM Sans", sans-serif !important;
+
+    font-size: 17px !important;
+
+    line-height: 1.9 !important;
+
+    color: #374151;
+
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =========================================================
+   COMMENTS
+   ========================================================= */
+
+.container.mt-3 > h1 {
+    color: var(--blog-text);
+
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+.container.mt-3 form {
+    max-width: 1000px;
+
+    padding: 16px;
+
+    margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   ADD BLOG
+   ========================================================= */
+
+body:has(form[action="/blog"]) .container.mt-4 {
+    max-width: 850px;
+
+    margin: 42px auto !important;
+
+    padding: 0 15px;
+}
+
+body:has(form[action="/blog"]) form {
+    margin: 0;
+
+    padding: 32px 36px;
+
+    background: #fff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+body:has(form[action="/blog"]) form label,
+body:has(form[action="/blog"]) form .form-label {
+    color: #374151;
+
+    font-size: 14px;
+    font-weight: 650;
+
+    margin-bottom: 8px;
+}
+
+body:has(form[action="/blog"]) form .form-control {
+    min-height: 46px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #dfe3ea;
+    border-radius: 10px;
+
+    background: #fff;
+
+    box-shadow: none;
+}
+
+body:has(form[action="/blog"]) form .form-control:focus {
+    border-color: #5957e8;
+
+    box-shadow:
+        0 0 0 3px rgba(89, 87, 232, 0.10);
+}
+
+body:has(form[action="/blog"]) form input[type="file"] {
+    padding: 9px;
+}
+
+body:has(form[action="/blog"]) form .form-text {
+    margin-top: 6px;
+
+    color: #8b92a1;
+
+    font-size: 13px;
+}
+
+body:has(form[action="/blog"]) form textarea.form-control {
+    min-height: 280px;
+
+    resize: vertical;
+
+    line-height: 1.7;
+}
+
+body:has(form[action="/blog"]) form .btn-primary {
+    margin-top: 6px;
+
+    padding: 10px 22px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #5957e8;
+
+    font-size: 14px;
+    font-weight: 650;
+
+    box-shadow: none;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+body:has(form[action="/blog"]) form .btn-primary:hover {
+    background: #4846d2;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   LOGIN / SIGNUP
+   FINAL — ONLY ONE VERSION
+   ========================================================= */
+
+body:has(form[action="/user/signin"]),
+body:has(form[action="/user/signup"]) {
+    background: #f6f7fb;
+}
+
+
+/* Normal top position */
+
+body:has(form[action="/user/signin"]) .container.mt-4,
+body:has(form[action="/user/signup"]) .container.mt-4 {
+    width: 100%;
+    max-width: 500px;
+
+    min-height: auto;
+
+    margin: 35px auto !important;
+
+    padding: 0 15px;
+
+    display: block;
+}
+
+
+/* Login / Signup form */
+
+form[action="/user/signin"],
+form[action="/user/signup"] {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    padding: 28px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+
+/* Labels */
+
+form[action="/user/signin"] label,
+form[action="/user/signup"] label {
+    color: #374151;
+
+    font-weight: 600;
+}
+
+
+/* Inputs */
+
+form[action="/user/signin"] .form-control,
+form[action="/user/signup"] .form-control {
+    border: 1px solid #d5dae2;
+
+    border-radius: 9px;
+
+    box-shadow: none;
+}
+
+form[action="/user/signin"] .form-control:focus,
+form[action="/user/signup"] .form-control:focus {
+    border-color: #5957e8;
+
+    box-shadow:
+        0 0 0 3px rgba(89, 87, 232, 0.10);
+}
+
+
+/* Login / Signup button */
+
+form[action="/user/signin"] .btn-primary,
+form[action="/user/signup"] .btn-primary {
+    width: 100%;
+
+    border-radius: 9px;
+
+    background: #5957e8;
+    border-color: #5957e8;
+
+    font-weight: 600;
+}
+
+form[action="/user/signin"] .btn-primary:hover,
+form[action="/user/signup"] .btn-primary:hover {
+    background: #4846d2;
+    border-color: #4846d2;
+}
+
+
+/* Simple Bootstrap-style alert */
+
+body:has(form[action="/user/signin"]) .alert,
+body:has(form[action="/user/signup"]) .alert {
+    margin-bottom: 15px;
+
+    border-radius: 6px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+    .navbar .container-fluid {
+        max-width: 95%;
+    }
+
+    .row.row-cols-4 .card-img-top {
+        height: 220px !important;
+        max-height: 220px;
+    }
+}
+
+
+@media (max-width: 991.98px) {
+
+    .row.row-cols-4 > .col {
+        flex: 0 0 50%;
+        width: 50%;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+
+    .navbar {
+        min-height: 68px;
+    }
+
+    .navbar-brand {
+        font-size: 1.3rem !important;
+    }
+
+    .navbar-brand::before {
+        width: 28px;
+        height: 28px;
+    }
+
+
+    /* Blog cards */
+
+    .row.row-cols-4 {
+        --bs-gutter-x: 14px;
+        --bs-gutter-y: 14px;
+    }
+
+    .row.row-cols-4 > .col {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .row.row-cols-4 .card-img-top {
+        height: 240px !important;
+        max-height: 240px;
+    }
+
+
+    /* General forms */
+
+    form {
+        padding: 20px;
+    }
+
+
+    /* Blog image */
+
+    .container.mt-4 > img[width="500px"] {
+        height: 300px !important;
+    }
+
+
+    /* Blog article */
+
+    .container.mt-4 > h1 {
+        font-size: 1.8rem;
+    }
+
+    .container.mt-4 > pre {
+        padding: 24px 20px;
+
+        font-size: 16px !important;
+    }
+
+
+    /* Add Blog */
+
+    body:has(form[action="/blog"]) .container.mt-4 {
+        margin: 25px auto !important;
+    }
+
+    body:has(form[action="/blog"]) form {
+        padding: 24px 20px;
+
+        border-radius: 14px;
+    }
+
+
+    /* Login / Signup */
+
+    body:has(form[action="/user/signin"]) .container.mt-4,
+    body:has(form[action="/user/signup"]) .container.mt-4 {
+        margin: 25px auto !important;
+        padding: 0 15px;
+    }
+
+    form[action="/user/signin"],
+    form[action="/user/signup"] {
+        padding: 22px 20px;
+    }
+}
+/* =========================
+   ABOUT PAGE
+========================= */
+
+.about-page {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 80px 25px;
+}
+
+
+/* HERO */
+
+.about-hero {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-badge {
+    display: inline-block;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #6b7280;
+}
+
+.about-hero h1 {
+    margin: 0;
+    font-size: 52px;
+    line-height: 1.1;
+    letter-spacing: -1.8px;
+    font-weight: 750;
+    color: #111827;
+}
+
+.about-hero h1 span {
+    color: #6366f1;
+}
+
+.about-hero p {
+    max-width: 650px;
+    margin: 25px auto 0;
+    color: #6b7280;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* CONTENT */
+
+.about-content {
+    max-width: 850px;
+    margin: 90px auto 0;
+}
+
+.about-block {
+    padding: 45px 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.section-label {
+    display: block;
+    margin-bottom: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    color: #6366f1;
+}
+
+.about-block h2 {
+    max-width: 650px;
+    margin-bottom: 18px;
+    font-size: 30px;
+    line-height: 1.3;
+    color: #111827;
+}
+
+.about-block p {
+    max-width: 750px;
+    margin-bottom: 16px;
+    color: #6b7280;
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+
+/* AUTHOR */
+
+.author-card {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 35px;
+    padding: 35px;
+    background: #f8f9fc;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+}
+
+.author-avatar {
+    flex-shrink: 0;
+    width: 85px;
+    height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #111827;
+    color: white;
+
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.author-info h2 {
+    margin-bottom: 10px;
+    font-size: 26px;
+    color: #111827;
+}
+
+.author-info p {
+    max-width: 650px;
+    margin-bottom: 18px;
+    color: #6b7280;
+    line-height: 1.7;
+}
+
+.author-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.author-links a {
+    color: #111827;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.author-links a:hover {
+    color: #6366f1;
+}
+
+.author-links span {
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+
+/* FOOTER MESSAGE */
+
+.about-footer {
+    margin: 90px auto 20px;
+    padding-top: 45px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.about-footer h2 {
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: #111827;
+}
+
+.about-footer p {
+    color: #6b7280;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .about-page {
+        padding: 55px 20px;
+    }
+
+    .about-hero h1 {
+        font-size: 38px;
+    }
+
+    .about-hero p {
+        font-size: 15px;
+    }
+
+    .about-content {
+        margin-top: 60px;
+    }
+
+    .about-block h2 {
+        font-size: 25px;
+    }
+
+    .author-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+/* =========================
+   ABOUT PAGE LOGO
+========================= */
+
+.about-logo {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.about-logo .navbar-brand {
+    color: #111827 !important;
+    font-size: 65px !important;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: -2px;
+}
+
+.about-logo .logo-icon {
+    width: 65px;
+    height: 65px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-logo .navbar-brand:hover {
+    color: #6366f1 !important;
+}
